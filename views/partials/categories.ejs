@@ -1,0 +1,8 @@
+<div class="categories">
+    <% if (locals.categories) { %>
+        <h1>Categories</h1>
+        <% categories.forEach(category => { %>
+            <h2><%= category.name %> </h1>
+        <% }) %>
+    <% } %>   
+</div>
