@@ -22,9 +22,8 @@ async function getCategoryById(id) {
 }
 
 async function getCategoryByName(name) {
-    const { rows } = await local_pool.query("SELECT name FROM categories WHERE name LIKE ($1)", [name]);
-    const category = rows[0];
-    return category;
+    const { rows } = await local_pool.query("SELECT name FROM categories WHERE name LIKE ($1)", [`%${name}%`]);
+    return rows;
 }
 
 async function getItemsByCatId(id) {
@@ -33,17 +32,17 @@ async function getItemsByCatId(id) {
 }
 
 async function  getCatIdByCatName(name) {
-    const { rows } = await local_pool.query("SELECT cat_id from categories WHERE name = ($1)", [name])
-    return rows[0];
+    const { rows } = await local_pool.query("SELECT id from categories WHERE name = ($1)", [name])
+    return rows[0].id;
 }
 
 async function addItem({item, category}) {
-    const category = getCategoryByName(category);
-    if (Object.values(category).length < 0) {
+    const cat = await getCategoryByName(category);
+    if (cat.length <= 0) {
         await createCategory(category);
     }
     const cat_id = await getCatIdByCatName(category);
-    await local_pool.query("INSERT INTO items (name, cate_id) VALUES ($1, $2)", [item, cat_id]);
+    await local_pool.query("INSERT INTO items (name, cat_id) VALUES ($1, $2)", [item, cat_id]);
 }
 
 async function createCategory(category) {
