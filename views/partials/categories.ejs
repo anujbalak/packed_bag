@@ -1,8 +1,16 @@
 <div class="categories">
     <% if (locals.categories) { %>
-        <h1>Categories</h1>
+        <h3>
+            <% if (locals.page === 'home') { %>
+                <a href="/categories">Categories</a>
+            <% } else { %>
+                Categories    
+            <% } %>  
+        </h3>
         <% categories.forEach(category => { %>
-            <h2><%= category.name %> </h1>
+            <a href="/categories/<%= category.id %>">
+                <h4><%= category.name %></h4>
+            </a>
         <% }) %>
     <% } %>   
 </div>

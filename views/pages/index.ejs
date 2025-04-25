@@ -1,7 +1,7 @@
 <%- include('../partials/header', {title: 'Mine Bag'}) %> 
     <main class="home">
         Browse BY
-        <%- include('../partials/items') %>
-        <%- include('../partials/categories') %>  
+        <%- include('../partials/items', {page: 'home'}) %>
+        <%- include('../partials/categories', {page: 'home'}) %>  
     </main>
 <%- include('../partials/footer') %> 

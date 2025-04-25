@@ -1,0 +1,19 @@
+<%- include('../partials/header', {title: locals.category.name}) %> 
+    <main class="item">
+        <h2>Item</h2>
+        <section class="category-box">
+            <% if (locals.category) { %>
+                    <div class="category-text">
+                        <button class="edit button">
+                            <a href="/edit/category/<%= category.id %>">✏</a>
+                        </button>
+                        <h3><%= category.name %> </h3>
+                        <button class="remove button">
+                            <a href="/delete/category/<%= category.id %>">🚫</a>
+                        </button>
+                    </div>
+                    <%- include('../partials/items')%> 
+            <% } %>  
+        </section>
+    </main>
+<%- include('../partials/footer') %> 

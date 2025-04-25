@@ -1,0 +1,32 @@
+<%- include('../partials/header', {title: locals.item.name}) %> 
+    <main class="item">
+        <h2>Item</h2>
+        <%- include('../partials/errors') %> 
+        <section class="item-box">
+            <% if (locals.item) { %>
+                <% if (!locals.isEdit) { %> 
+                    <a href="/edit/item/<%= item.id %>">
+                        <button class="edit button" onclick="() => isEdit = true;">
+                            ✏
+                        </button>
+                    </a>
+                    <h3><%= item.name %> </h3>
+                    <span>
+                        <a href="/categories/<%= item.cat_id %>">
+                            <%= item.cat_id %>
+                        </a>
+                    </span>
+                    <form action="/delete/item/<%= item.id %>" method="post">
+                        <button class="remove button" type="submit">🚫</button>
+                    </form>
+                    
+                <% } else { %>
+                    <form action="/edit/item/<%= item.id %>" method="post">
+                        <input type="text" name="item" value="<%= item.name %>">
+                        <button type="submit" >Make Changes</button>
+                    </form>
+                <% } %> 
+            <% } %>  
+        </section>
+    </main>
+<%- include('../partials/footer') %> 

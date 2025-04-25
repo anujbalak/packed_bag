@@ -16,7 +16,7 @@ async function getItem(id) {
 }
 
 async function getCategoryById(id) {
-    const { rows } = await local_pool.query("SELECT name FROM categories WHERE id = ($1)", [id]);
+    const { rows } = await local_pool.query("SELECT * FROM categories WHERE id = ($1)", [id]);
     const category = rows[0];
     return category;
 }
@@ -27,8 +27,8 @@ async function getCategoryByName(name) {
 }
 
 async function getItemsByCatId(id) {
-    const { rows } = await local_pool.query('SELECT name FROM categories WHERE cat_id = ($1)', [id]);
-    return rows[0]
+    const { rows } = await local_pool.query('SELECT * FROM items WHERE cat_id = ($1)', [id]);
+    return rows
 }
 
 async function  getCatIdByCatName(name) {
@@ -46,7 +46,23 @@ async function addItem({item, category}) {
 }
 
 async function createCategory(category) {
+    const cat = await getCategoryByName(category)
+    if (cat.length > 0) {
+        return;
+    }
     await local_pool.query('INSERT INTO categories (name) VALUES ($1)', [category])
 }
 
-export { getAllItems, getAllCategries, getItem, getItemsByCatId, addItem, createCategory}
+async function updateItem(id, name) {
+    await local_pool.query('UPDATE items SET name = ($2) WHERE id = ($1)', [id, name])
+}
+
+async function deleteItem(id) {
+    await local_pool.query("DELETE FROM items WHERE id = ($1)", [id]);
+}
+
+async function deleteCategory(id) {
+    
+}
+
+export { getAllItems, getAllCategries, getItem, getItemsByCatId, addItem, createCategory, getCatIdByCatName, getCategoryById, updateItem, deleteItem}
