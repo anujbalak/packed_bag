@@ -11,6 +11,7 @@ import itemsRouter from './routes/itemsRouter.js';
 import categoriesRouter from './routes/categoriesRouter.js';
 import editRouter from './routes/editRouter.js';
 import deleteRouter from './routes/deleteRouter.js';
+import resetRouter from './routes/resetRouter.js';
 
 
 const __filename = url.fileURLToPath(import.meta.url)
@@ -27,6 +28,7 @@ app.use('/items', itemsRouter)
 app.use('/categories', categoriesRouter)
 app.use('/edit', editRouter)
 app.use('/delete', deleteRouter)
+app.use('/reset', resetRouter);
 app.use((req, res) => {
     res.status(404).render('pages/error')
 })
