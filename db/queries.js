@@ -57,12 +57,30 @@ async function updateItem(id, name) {
     await local_pool.query('UPDATE items SET name = ($2) WHERE id = ($1)', [id, name])
 }
 
+async function updateCategory(id, name) {
+    await local_pool.query('UPDATE categories SET name = ($2) WHERE id = ($1)', [id, name])
+}
+
 async function deleteItem(id) {
     await local_pool.query("DELETE FROM items WHERE id = ($1)", [id]);
 }
 
 async function deleteCategory(id) {
-    
+    await local_pool.query('DELETE FROM categories WHERE id = ($1)', [id]);
+    await local_pool.query('DELETE FROM items WHERE cat_id = ($1)', [id]);
 }
 
-export { getAllItems, getAllCategries, getItem, getItemsByCatId, addItem, createCategory, getCatIdByCatName, getCategoryById, updateItem, deleteItem}
+export { 
+    getAllItems, 
+    getAllCategries, 
+    getItem, 
+    getItemsByCatId, 
+    addItem, 
+    createCategory, 
+    getCatIdByCatName, 
+    getCategoryById, 
+    updateItem, 
+    deleteItem,
+    updateCategory,
+    deleteCategory,
+}

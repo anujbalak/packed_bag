@@ -1,19 +1,43 @@
 <%- include('../partials/header', {title: locals.category.name}) %> 
-    <main class="item">
-        <h2>Item</h2>
+    <main class="category">
+        <%- include('../partials/errors') %> 
         <section class="category-box">
             <% if (locals.category) { %>
+                <% if (!locals.isEdit) { %> 
                     <div class="category-text">
-                        <button class="edit button">
-                            <a href="/edit/category/<%= category.id %>">✏</a>
-                        </button>
-                        <h3><%= category.name %> </h3>
-                        <button class="remove button">
-                            <a href="/delete/category/<%= category.id %>">🚫</a>
+                        <a href="/edit/category/<%= category.id %>" class="edit button" onclick="() => isEdit = true;">
+                            <img src="/images/Writable_Book.png" alt="">
+                        </a>
+                        <h3 class="category-name"><%= category.name %> </h3>
+                        <!-- <form action="/delete/category/<%= category.id %>" method="get">
+                        </form> -->
+                        <button 
+                            class="remove button" 
+                            type="submit" 
+                            onclick="document.querySelector('dialog.cat-delete').showModal()"
+                        >
+                            <img src="/images/lava_still.png" alt="">
                         </button>
                     </div>
-                    <%- include('../partials/items')%> 
+                    <%- include('../partials/items')%>
+                <% } else { %>
+                    <form action="/edit/category/<%= category.id %>" method="post" class="edit-form">
+                        <input type="text" name="category" value="<%= category.name %>">
+                        <button type="submit" class="submit">Make Changes</button>
+                    </form>
+                <% } %>   
             <% } %>  
+                <dialog class="cat-delete">
+                    <form action="/delete/category/<%= category.id %>" method="post" class="dialog-form">
+                        <p>Deleting this category will also delete <span class="highlight"><%= items.length %> items.</span></p>
+                        <button 
+                            class="cancel button" 
+                            type="reset" 
+                            onclick="document.querySelector('dialog.cat-delete').close()"
+                        >Cancel</button>
+                        <button class="submit button" type="submit">Delete</button>
+                    </form>
+                </dialog>
         </section>
     </main>
 <%- include('../partials/footer') %> 

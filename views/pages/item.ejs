@@ -1,29 +1,30 @@
 <%- include('../partials/header', {title: locals.item.name}) %> 
     <main class="item">
-        <h2>Item</h2>
+        <h2 class="item-text">Item</h2>
         <%- include('../partials/errors') %> 
         <section class="item-box">
             <% if (locals.item) { %>
                 <% if (!locals.isEdit) { %> 
-                    <a href="/edit/item/<%= item.id %>">
-                        <button class="edit button" onclick="() => isEdit = true;">
-                            ✏
-                        </button>
+                    <a href="/edit/item/<%= item.id %>" class="edit button" onclick="() => isEdit = true;">
+                        <img src="/images/Writable_Book.png" alt="">
                     </a>
-                    <h3><%= item.name %> </h3>
-                    <span>
-                        <a href="/categories/<%= item.cat_id %>">
-                            <%= item.cat_id %>
-                        </a>
-                    </span>
+                    <h3 class="item-name"><%= item.name %> </h3>
+                    <% if (locals.category) { %> 
+                        <span class="cat-in-item">
+                            Category:
+                            <a href="/categories/<%= item.cat_id %>">
+                                <%= locals.category.name %>
+                            </a>
+                        </span>
+                    <% } %> 
                     <form action="/delete/item/<%= item.id %>" method="post">
-                        <button class="remove button" type="submit">🚫</button>
+                        <button class="remove button" type="submit"><img src="/images/lava_still.png" alt=""></button>
                     </form>
                     
                 <% } else { %>
-                    <form action="/edit/item/<%= item.id %>" method="post">
+                    <form action="/edit/item/<%= item.id %>" method="post" class="edit-form">
                         <input type="text" name="item" value="<%= item.name %>">
-                        <button type="submit" >Make Changes</button>
+                        <button type="submit" class="submit">Make Changes</button>
                     </form>
                 <% } %> 
             <% } %>  

@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
+.jersey-15-regular {
+    font-family: "Jersey 15", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jersey 15', sans-serif;
+    background-color: aliceblue;
+    color: #1f1f1f;
+    background-image: url('./images/pearlescent_froglight.png');
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+    background-image: url('./images/Oak_Planks.png');
+    image-rendering: crisp-edges;
+    background-position: center;
+    box-shadow: 0 5px 5px rgb(50, 39, 22);
+}
+
+.title a {
+    color: rgb(249, 244, 243);
+    margin-left: 1em;
+    font-size: 4rem;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-self: self-end;
+}
+.nav a {
+    color: rgb(249, 244, 243);
+    font-size: 2rem;
+}
+
+a {
+    all: unset;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+a:focus, a:hover {
+    text-decoration: underline;
+}
+
+.home {
+    color: rgb(55, 43, 59);
+    display: grid;
+    gap: 3em;
+}
+
+.home .browse-by, .all-items, .all-categories, .item-text {
+    font-size: 1.6rem;
+    margin: 1em 2em;
+}
+
+.items, .categories, .item-box {
+    font-size: 2rem;
+    background-image: url('./images/smooth_stone.png');
+    display: flex;
+    flex-direction: column;
+    margin: 0 2em;
+    border-radius: 1em;
+    background-position: center;
+    padding-bottom: 1em;
+}
+
+.categories {
+    color: rgb(226, 211, 211);
+    background-image: url('./images/chiseled_stone.png');
+}
+
+.items-box, .categories-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    margin: 0 2em;
+}
+
+.items-box a, .categories-box a {
+    font-size: 2rem;
+}
+
+.items-box a h4, .categories-box a h4 {
+    margin: 0;
+}
+
+.items-heading a, .items-heading, .category-heading a, .category-heading {
+    font-size: 3rem;
+    margin: 0.5em;
+}
+
+.item-box, .category-text {
+    color: rgb(249, 244, 243);
+    background-image: url('./images/cartography_table.png');
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    gap: 2em;
+    background-position: center;
+}
+
+.category-text {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2em;
+    border-radius: 1em;
+    background-image: url('./images/chiseled_bookshelf.png');
+}
+
+.edit.button, .remove.button {
+    margin-left: 1em;
+    background-color: rgb(226, 211, 211);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove.button {
+    margin-left: 0;
+    margin-right: 1em;
+    border: none;
+}
+
+.item-name, .category-name {
+    font-size: 3rem;
+}
+
+.cat-in-item {
+    font-size: 1rem;
+}
+.cat-in-item a {
+    font-size: 2rem;
+}
+
+input {
+    all: unset;
+    font-size: 1.4rem;
+    color: #1f1f1f;
+    border: solid rgb(50, 39, 22) 2px;
+    border-radius: 10px;
+    padding: 0 1em;
+    width: 10em;
+    background-color: rgb(249, 244, 243);
+}
+
+input:hover, input:hover {
+    outline: 2px solid currentColor;
+}
+
+.edit-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1em;
+    margin-top: 8px;
+}
+
+.submit, .cancel.button {
+    font-size: 1.5rem;
+    font-family: inherit;
+    background-color: rgb(226, 211, 211);
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.cat-delete {
+    border: none;
+    border-radius: 2em;
+    background-image: url('./images/jungle_door.png');
+    font-size: 1.6rem;
+    color: rgb(50, 39, 22);
+    background-position: center;
+}
+
+.highlight {
+    color: rgb(58, 28, 0);
+    font-size: 2rem;
+}
+
+.errors {
+    font-size: 1.4rem;
+}

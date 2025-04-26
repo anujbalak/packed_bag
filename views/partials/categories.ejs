@@ -1,16 +1,18 @@
 <div class="categories">
     <% if (locals.categories) { %>
-        <h3>
+        <h3 class="category-heading">
             <% if (locals.page === 'home') { %>
                 <a href="/categories">Categories</a>
             <% } else { %>
                 Categories    
             <% } %>  
         </h3>
-        <% categories.forEach(category => { %>
-            <a href="/categories/<%= category.id %>">
-                <h4><%= category.name %></h4>
-            </a>
-        <% }) %>
+        <div class="categories-box">
+            <% categories.forEach(category => { %>
+                <a href="/categories/<%= category.id %>">
+                    <h4><%= category.name %></h4>
+                </a>
+            <% }) %>
+        </div>
     <% } %>   
 </div>

@@ -1,5 +1,6 @@
 import { getAllCategries, getCategoryById, getItemsByCatId } from "../db/queries.js"
 
+let isEdit = false;
 const getCatPage = async (req, res) => {
     const categories = await getAllCategries();
     res.render('pages/categories', {categories});
@@ -16,7 +17,7 @@ const catPage = async (req, res) => {
         })
     }
     res.render('pages/category', {
-        category, items
+        category, items, isEdit
     })
 
 }

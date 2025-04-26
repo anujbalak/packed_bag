@@ -1,5 +1,6 @@
-import { getAllItems, getItem } from "../db/queries.js";
-import { isEdit } from "./editController.js";
+import { getAllItems, getCategoryById, getItem } from "../db/queries.js";
+
+let isEdit = false
 
 const getItemsPage = async (req, res) => {
     const items = await getAllItems();
@@ -14,7 +15,8 @@ const getItemPage = async (req, res) => {
             error: 'Item does not exists'
         })
     }
-    res.render('pages/item', {item, isEdit});
+    const category = await getCategoryById(item.cat_id)
+    res.render('pages/item', {category, item, isEdit});
 }
 
 export { getItemsPage, getItemPage }
