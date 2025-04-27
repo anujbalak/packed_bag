@@ -9,6 +9,10 @@ const con = {
     port: process.env.L_PORT
 }
 
-const local_pool = new Pool(con);
+const r_con = {
+    connectionString: process.env.DATABASE_URL,
+}
 
-export { local_pool, con }
+const local_pool = new Pool(r_con);
+
+export { local_pool, con, r_con }
