@@ -9,8 +9,11 @@ const con = {
     port: process.env.L_PORT
 }
 
+const connectionString = process.env.DATABASE_PUBLIC_URL;
+
 const r_con = {
-    connectionString: process.env.DATABASE_URL,
+    connectionString: connectionString,
+    ssl: connectionString.includes('railway') ? { rejectUnauthorized: false } : false
 }
 
 const local_pool = new Pool(r_con);

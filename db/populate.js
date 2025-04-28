@@ -37,9 +37,9 @@ VALUES
 `
 async function main() {
     console.log('...seeding');
-    const client = new Client(con);
+    const client = new Client(r_con);
     await client.connect()
-    await client.query(pushCategories);
+    await client.query(create_items_table);
     await client.end();
     console.log('done');
 }
@@ -57,3 +57,5 @@ export async function reset() {
     await client.end();
     console.log('done!');
 }
+
+reset()
