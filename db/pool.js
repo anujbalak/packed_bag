@@ -13,7 +13,6 @@ const connectionString = process.env.DATABASE_PUBLIC_URL;
 
 const r_con = {
     connectionString: connectionString,
-    // ssl: connectionString.includes('railway') ? { rejectUnauthorized: false } : false
 }
 
 const local_pool = new Pool(r_con);
